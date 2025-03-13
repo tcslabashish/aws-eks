@@ -26,11 +26,11 @@ jobs:
       run: aws eks update-kubeconfig --name ashish-eks --region us-west-1 
     - name: kubectl command
       run: |
-        helm install arc \
+        helm upgade --install arc \
          --namespace arc-systems \
          --create-namespace \
          oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
-        helm install arc-runner-set \
+        helm upgrade --install arc-runner-set \
           --namespace arc-runners \
           --create-namespace \
           --set githubConfigUrl="https://github.com/tcslabashish" \
